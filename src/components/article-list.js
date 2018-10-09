@@ -17,6 +17,7 @@ export class ArticleList extends Component {
   }
 
   render() {
+    console.log('---', 'rendering article list')
     if (this.props.loading) return <Loader />
     return <ul>{this.body}</ul>
   }
@@ -43,7 +44,8 @@ export default connect(
     console.log('---', 'articles connect')
     return {
       articles: filtratedArticles(state),
-      loading: articlesLoadingSelector(state)
+      loading: articlesLoadingSelector(state),
+      router: state.router
     }
   },
   { fetchData: loadAllArticles }
